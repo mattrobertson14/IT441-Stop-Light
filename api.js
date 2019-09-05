@@ -2,6 +2,10 @@ var router = require("express-promise-router")()
 
 let currentLight = 'off'
 
+router.get('/status', async (req, res, next) => {
+  res.json(`The light is currently ${currentLight}`)
+})
+
 router.post('/redon', async (req, res, next) => {
   console.log(`turn the red light on from ${currentLight}!`)
 

@@ -1,41 +1,34 @@
 var router = require("express-promise-router")()
-
-let currentLight = 'off'
+const rpi = require('./rpi')
 
 router.get('/status', async (req, res, next) => {
-  res.json(`The light is currently ${currentLight}`)
+  const result = rpi.getCurrentLight()
+
+  res.json(result)
 })
 
 router.post('/redon', async (req, res, next) => {
-  console.log(`turn the red light on from ${currentLight}!`)
+  const result = rpi.redOn()
 
-  res.json(`Turning red light on from ${currentLight}!`)
-
-  currentLight = 'red'
+  res.json(result)
 })
 
 router.post('/yellowon', async (req, res, next) => {
-  console.log(`turn the yellow light on from ${currentLight}!`)
+  const result = rpi.yellowOn()
 
-  res.json(`Turning yellow light on from ${currentLight}!`)
-
-  currentLight = 'yellow'
+  res.json(result)
 })
 
 router.post('/greenon', async (req, res, next) => {
-  console.log(`turn the green light on from ${currentLight}!`)
+  const result = rpi.greenOn()
 
-  res.json(`Turning green light on from ${currentLight}!`)
-
-  currentLight = 'green'
+  res.json(result)
 })
 
 router.post('/off', async (req, res, next) => {
-  console.log(`The ${currentLight}! is turned off`)
+  const result = rpi.lightsOut()
 
-  res.json(`Turning ${currentLight} off!`)
-
-  currentLight = 'off'
+  res.json(result)
 })
 
 module.exports = router

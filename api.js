@@ -1,5 +1,11 @@
 var router = require("express-promise-router")()
-const rpi = require('./rpi')
+let rpi
+
+if (process.env.NODE_ENV = 'dev'){
+  rpi = require('./mock_rpi')
+} else {
+  rpi = require('rpi')
+}
 
 router.get('/status', async (req, res, next) => {
   const result = rpi.getCurrentLight()

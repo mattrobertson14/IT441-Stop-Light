@@ -37,4 +37,10 @@ router.post('/off', async (req, res, next) => {
   res.json(result)
 })
 
+router.post('/cycle', async (req, res, next) => {
+  const result = rpi.cycle()
+
+  res.json(result)
+})
+
 module.exports = router

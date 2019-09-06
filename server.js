@@ -3,7 +3,7 @@ var http = require('http')
 var express = require('express')
 var apiRoute = require('./api')
 
-if (process.env.NODE_ENV != 'dev'){
+if (process.env.NODE_ENV !== 'dev'){
   var rpi = require('./rpi')
   rpi.lightsOut()
 }

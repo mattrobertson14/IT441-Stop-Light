@@ -1,7 +1,7 @@
 var router = require("express-promise-router")()
 let rpi
 
-if (process.env.NODE_ENV = 'dev'){
+if (process.env.NODE_ENV === 'dev'){
   rpi = require('./mock_rpi')
 } else {
   rpi = require('rpi')

@@ -74,9 +74,9 @@ const currentLight = () => {
 }
 
 const cycle = () => {
-  changeLight('red')
+  changeLight('green')
   setTimeout(() => changeLight('yellow'), 5000)
-  setTimeout(() => changeLight('green'), 7000)
+  changeLight(() => changeLight('red', 7000)
   cyclingTimeout = setTimeout(cycle, 12000)
 }
 

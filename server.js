@@ -2,6 +2,9 @@
 var http = require('http')
 var express = require('express')
 var apiRoute = require('./api')
+var rpi = require('./rpi')
+
+rpi.lightsOut()
 
 var app = express()
 

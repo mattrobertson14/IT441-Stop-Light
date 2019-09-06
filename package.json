@@ -19,6 +19,7 @@
   "homepage": "https://github.com/mattrobertson14/IT441-Stop-Light#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-promise-router": "^3.0.3"
+    "express-promise-router": "^3.0.3",
+    "onoff": "^4.1.3"
   }
 }

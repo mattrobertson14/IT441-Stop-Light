@@ -13,6 +13,7 @@ rpi.getCurrentLight = () => {
 rpi.redOn = () => {
   console.log('Turning Red On')
   
+  stopCycle()
   changeLight('red')
 
   return {light: currentLight()}
@@ -21,6 +22,7 @@ rpi.redOn = () => {
 rpi.yellowOn = () => {
   console.log('Turning Yellow On')
   
+  stopCycle()
   changeLight('yellow')
 
   return {light: currentLight()}
@@ -29,6 +31,7 @@ rpi.yellowOn = () => {
 rpi.greenOn = () => {
   console.log('Turning Green On')
   
+  stopCycle()
   changeLight('green')
 
   return {light: currentLight()}
@@ -37,6 +40,7 @@ rpi.greenOn = () => {
 rpi.lightsOut = () => {
   console.log('Turning Lights Off')
 
+  stopCycle()
   changeLight()
 
   return {light: currentLight()}
@@ -51,7 +55,6 @@ rpi.cycle = () => {
 }
 
 const changeLight = (color) => {
-  if (cyclingTimeout) clearTimeout(cyclingTimeout)
   RED.writeSync(color === 'red'? 1 : 0)
   YEL.writeSync(color === 'yellow'? 1 : 0)
   GRN.writeSync(color === 'green'? 1 : 0)
@@ -72,9 +75,13 @@ const currentLight = () => {
 
 const cycle = () => {
   changeLight('red')
-  setTimeout(changeLight('yellow'), 5000)
-  setTimeout(changeLight('green'), 7000)
+  setTimeout(() => changeLight('yellow'), 5000)
+  setTimeout(() => changeLight('green'), 7000)
   cyclingTimeout = setTimeout(cycle, 12000)
+}
+
+const stopCycle = () => {
+  if (cyclingTimeout) clearTimeout(cyclingTimeout)
 }
 
 module.exports = rpi

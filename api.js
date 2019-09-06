@@ -4,7 +4,7 @@ let rpi
 if (process.env.NODE_ENV === 'dev'){
   rpi = require('./mock_rpi')
 } else {
-  rpi = require('rpi')
+  rpi = require('./rpi')
 }
 
 router.get('/status', async (req, res, next) => {

@@ -1,37 +1,63 @@
+let Gpio = require('onoff').Gpio
+let RED = new Gpio(4, 'out')
+let YEL = new Gpio(3, 'out')
+let GRN = new Gpio(2, 'out')
+
 let rpi = {}
 
-let currentLight = 'off'
-
 rpi.getCurrentLight = () => {
-  return {light: currentLight}
+  return {light: currentLight()}
 }
 
 rpi.redOn = () => {
   console.log('Turning Red On')
-  currentLight = 'red'
+  
+  changeLight('red')
 
-  return {light: currentLight}
+  return {light: currentLight()}
 }
 
 rpi.yellowOn = () => {
   console.log('Turning Yellow On')
-  currentLight = 'yellow'
+  
+  changeLight('yellow')
 
-  return {light: currentLight}
+  return {light: currentLight()}
 }
 
 rpi.greenOn = () => {
   console.log('Turning Green On')
-  currentLight = 'green'
+  
+  changeLight('green')
 
-  return {light: currentLight}
+  return {light: currentLight()}
 }
 
 rpi.lightsOut = () => {
   console.log('Turning Lights Off')
-  currentLight = 'off'
 
-  return {light: currentLight}
+  changeLight()
+
+  return {light: currentLight()}
+}
+
+const changeLight = (color) => {
+  RED.writeSync(color === 'red'? 1 : 0)
+  YEL.writeSync(color === 'yellow'? 1 : 0)
+  GRN.writeSync(color === 'green'? 1 : 0)
+}
+
+const currentLight = () => {
+  switch (true){
+    case RED.readSync() === 1:
+      return 'red'
+    case YEL.readSync() === 1:
+      return 'yellow'
+    case GRN.readSync() === 1:
+      return 'green'
+    default:
+      return 'off'
+  }
 }
 
 module.exports = rpi

@@ -42,8 +42,9 @@ function onListening() {
 }
 
 function onExit() {
-  console.log('Node Server Shutting Down . . .')
+  console.log('\nNode Server Shutting Down . . .')
   if (process.env.NODE_ENV !== 'dev'){
     require('./rpi').lightsOut()
   }
+  process.exit()
 }

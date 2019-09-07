@@ -2,6 +2,8 @@ let rpi = {}
 
 let currentLight = 'off'
 let cyclingTimeout = null
+let redTimeout = null
+let yelTimeout = null
 
 rpi.getCurrentLight = () => {
   return {light: currentLight}
@@ -60,13 +62,15 @@ const changeLight = (color) => {
 
 const cycle = () => {
   changeLight('green')
-  setTimeout(() => changeLight('yellow'), 5000)
-  setTimeout(() => changeLight('red'), 7000)
+  yelTimeout = setTimeout(() => changeLight('yellow'), 5000)
+  redTimeout = setTimeout(() => changeLight('red'), 7000)
   cyclingTimeout = setTimeout(cycle, 12000)
 }
 
 const stopCycle = () => {
   if (cyclingTimeout) clearTimeout(cyclingTimeout)
+  if (redTimeout) clearTimeout(redTimeout)
+  if (yelTimeout) clearTimeout(yelTimeout)
 }
 
  module.exports = rpi 

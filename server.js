@@ -18,6 +18,7 @@ server.on('error', onError)
 server.on('listening', onListening)
 
 // Run Cleanup command if program exits for any reason
+process.stdin.resume() // Listen for command to kill server
 server.on('SIGINT', onExit)
 server.on('SIGUSR1', onExit)
 server.on('SIGUSR2', onExit)
@@ -41,6 +42,7 @@ function onListening() {
 }
 
 function onExit() {
+  console.log('Node Server Shutting Down . . .')
   if (process.env.NODE_ENV !== 'dev'){
     require('./rpi').lightsOut()
   }

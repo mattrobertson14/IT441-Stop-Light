@@ -20,10 +20,6 @@ server.on('listening', onListening)
 // Run Cleanup command if program exits for any reason
 process.stdin.resume() // Listen for command to kill server
 process.on('SIGINT', onExit)
-process.on('SIGUSR1', onExit)
-process.on('SIGUSR2', onExit)
-process.on('uncaughtException', onExit)
-process.on('exit', onExit)
 
 function onError(error) {
   console.error('HTTP Server Error' + error)

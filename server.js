@@ -18,11 +18,11 @@ server.on('error', onError)
 server.on('listening', onListening)
 
 // Run Cleanup command if program exits for any reason
-server.on('exit', onExit)
 server.on('SIGINT', onExit)
 server.on('SIGUSR1', onExit)
 server.on('SIGUSR2', onExit)
 server.on('uncaughtException', onExit)
+server.on('exit', onExit)
 
 function onError(error) {
   console.error('HTTP Server Error' + error)

@@ -9,7 +9,7 @@ var port = process.env.PORT || '8080'
 app.set('port', port)
 
 app.use('/api', apiRoute)
-app.use('/', express.static('src'))
+app.use('/', express.static('../build'))
 
 var server = http.createServer(app)
 

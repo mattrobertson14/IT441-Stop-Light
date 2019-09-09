@@ -25,6 +25,12 @@ function App() {
     }).catch(console.log)
   }
 
+  const startCycle = () => {
+    axios.post('/api/cycle').then(res => {
+      setLight(res.data.light)
+    }).catch(console.log)
+  }
+
   return (
     <div className="App">
       <h1>Light: {light}</h1>
@@ -36,6 +42,7 @@ function App() {
         ></div>
       ))}
       </div>
+      <button onClick={() => startCycle()}>CYCLE</button>
       <button onClick={() => turnOffLight()}>TURN OFF</button>
     </div>
   );

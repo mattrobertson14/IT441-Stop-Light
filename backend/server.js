@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var http = require('http')
 var express = require('express')
+const path = require('path')
 var apiRoute = require('./api')
 
 var app = express()
@@ -9,7 +10,7 @@ var port = process.env.PORT || '8080'
 app.set('port', port)
 
 app.use('/api', apiRoute)
-app.use('/', express.static('../build'))
+app.use(express.static(path.join(__dirname, '../build/')))
 
 var server = http.createServer(app)
 

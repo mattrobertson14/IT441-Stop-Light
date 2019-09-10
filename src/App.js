@@ -8,10 +8,19 @@ function App() {
   const lights = ['red', 'yellow', 'green']
 
   useEffect(() => {
+    getStatus()
+    const inter = setInterval(getStatus, 500)
+
+    return () => {
+      clearInterval(inter)
+    }
+  }, [])
+
+  const getStatus = () => {
     axios.get('/api/status').then(res => {
       setLight(res.data.light)
     }).catch(console.log)
-  }, [])
+  }
 
   const changeLight = (color) => {
     axios.post(`/api/${color}on`).then(res => {
@@ -33,17 +42,18 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Light: {light}</h1>
+      <h1>Stoplight</h1>
       <div className='stoplight'>
         {lights.map(l => (
           <div 
-          className={`light ${l}${l === light? ' on':''}`} 
-          onClick={() => changeLight(l)}
-        ></div>
+            key={l}
+            className={`light ${l}${l === light? ' on':''}`} 
+            onClick={() => changeLight(l)}
+          ></div>
       ))}
       </div>
-      <button onClick={() => startCycle()}>CYCLE</button>
       <button onClick={() => turnOffLight()}>TURN OFF</button>
+      <button onClick={() => startCycle()}>AUTO MODE</button>
     </div>
   );
 }

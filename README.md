@@ -23,4 +23,4 @@ The backend is built using [NodeJS](https://nodejs.org/en/). The API is built us
 ---
 
 **Disclaimer**
-_This project was made for a class at Brigham Young University. This was a class assignment with certain parameters to be met. This is not a project that has a real life application in it's current state. This code is also not meant for production and has not been fully optimized._
+_This project was made for a class at Brigham Young University. This was a class assignment with certain parameters to be met. This is not a project that has a real life application in its current state. This code is also not meant for production and has not been fully optimized._

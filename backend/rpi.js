@@ -51,6 +51,7 @@ rpi.lightsOut = () => {
 rpi.cycle = () => {
   console.log('Turning on light cycling')
 
+  stopCycle()
   cycle()
 
   return {light: currentLight()}
@@ -76,9 +77,9 @@ const currentLight = () => {
 }
 
 const cycle = () => {
-  changeLight('green')
-  yelTimeout = setTimeout(() => changeLight('yellow'), 5000)
-  redTimeout = setTimeout(() => changeLight('red'), 7000)
+  changeLight('red')
+  redTimeout = setTimeout(() => changeLight('green'), 5000)
+  yelTimeout = setTimeout(() => changeLight('yellow'), 10000)
   cyclingTimeout = setTimeout(cycle, 12000)
 }
 

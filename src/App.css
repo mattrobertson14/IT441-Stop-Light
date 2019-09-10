@@ -92,6 +92,6 @@ button:active {
   }
 
   .light:not(.on):hover {
-    opacity: initial;
+    opacity: .1;
   }
 }

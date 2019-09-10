@@ -1,5 +1,7 @@
 # IT441 Stop Light
 
+🚦🚥🚦
+
 This is a simple stoplight implementation using a Raspberry Pi and GPIO pins. The objective of this code is to server a web server, from which you can change which light (red, yellow, or green) is on at any given moment. There is also the ability to turn off the lights. The final action you can take from the frontend is that you can set the lights to _auto mode_. This will cause the lights to act similarly to a stoplight (i.e. red will turn on, after a few seconds green will turn on, after a few seconds yellow will turn on briefly warning the light will soon turn to red, and finally the light will turn red again). This cycle will continue until another light is turned on from the frontend or the lights are turned off by the frontend.
 
 ## Infrastructure

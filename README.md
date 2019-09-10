@@ -14,7 +14,7 @@ The frontend is built using [ReactJS](https://reactjs.org/). Furthermore, this a
 
 ### Backend 💪🏻
 
-The backend is built using [NodeJS](https://nodejs.org/en/). The API is built using the [ExpressJS Framework](https://expressjs.com/). The following packages also helped in creating the backend of this project
+The backend server is the meat of this project. It is where almost all of the logic is. It is what interfaces directly with the GPIO pins and what manages the cycling of the lights. The backend is built using [NodeJS](https://nodejs.org/en/). The API is built using the [ExpressJS Framework](https://expressjs.com/). The following packages also helped in creating the backend of this project
 
 * express-promise-router ([Documentation](https://www.npmjs.com/package/express-promise-router))
 * onoff ([Documentation](https://www.npmjs.com/package/onoff))

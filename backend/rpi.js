@@ -1,7 +1,7 @@
 let Gpio = require('onoff').Gpio
-let RED = new Gpio(4, 'out')
-let YEL = new Gpio(3, 'out')
-let GRN = new Gpio(2, 'out')
+let RED = new Gpio(17, 'out')
+let YEL = new Gpio(27, 'out')
+let GRN = new Gpio(22, 'out')
 
 let rpi = {}
 let cyclingTimeout = null
